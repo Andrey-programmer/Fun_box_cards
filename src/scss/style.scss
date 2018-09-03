@@ -1,0 +1,324 @@
+@import 'partails/params';
+
+
+@font-face {   
+    font-family: 'Exo 2.0';
+    src: url('../fonts/Exo2.0-Thin.otf');
+}
+
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image:url('../img/shadow.png'), url('../img/prototype.jpg');
+    background-size: 100%, 100%;
+    color: $contentColor;
+
+    .main-display {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;          
+    
+        h1 {
+            text-align: center;
+            color: $textOverBackground;
+            font-size: 36px;
+            font-family: 'Exo 2.0';
+            margin-bottom: 30px;
+            
+        }
+
+        .main-wrapper {
+            width: 326px;
+            height: 486px;
+            display: flex;
+            justify-content: center;
+            position: relative;           
+            padding: 3px;
+            border-radius: 13px;
+            margin: auto;
+
+
+            svg {
+                width: 326px;
+                height: 486px;
+                position: absolute;
+                bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;   
+                z-index: -100;   
+                transition: fill .4s;    
+            }
+
+            .svg-wrapper, .svg-disabled {
+                border-radius: 15px;
+                overflow: hidden;
+                position: absolute;             
+                bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+
+            }
+
+            .svg-wrapper {
+                cursor: pointer;
+            }
+
+            .svg-disabled {
+                z-index: 100;
+                opacity: 0;
+                
+
+                svg {
+
+                    fill: #FFF;
+                }
+            }
+
+
+            .wrapper{
+                width: 320px;
+                height: 480px;
+                position: relative;
+                border-radius: 13px;
+                overflow: hidden;
+                cursor: pointer;
+        
+                background: /* $backgroundCards */ url('../img/funbox_logo1.png') no-repeat;
+                background-size: 130% auto;
+                background-position: -40px 200px;
+    
+                .discription {
+                    margin-left: 45px;
+                    padding-top: 20px;
+    
+                    .header {
+                        font-size: 48px;
+                        font-weight: bold;
+                        color: $headerColor;
+                        margin-bottom: 0;
+                    }
+    
+                    .food {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: $headerColor;
+                        margin-bottom: 8px;
+                        margin-top: -6px;
+                    }
+    
+                    .count {
+                        font-weight: bold;
+                    }
+            
+                }
+        
+               
+                p {
+                    font-size: 14px;
+                    margin: 0;
+                    text-transform: lowercase;
+                    line-height: 1.3;
+        
+                    &.weight {
+                        font-size: 42px;
+                        line-height: 27px;
+                    }
+        
+                    &.units {
+                        font-size: 21px;
+                    }                    
+                  
+                }
+    
+               .circle {
+                    border-radius: 50%;               
+                    position: absolute;
+                    right: 16px;
+                    bottom: 16px;
+                    width: 81px;
+                    height: 81px;
+                    z-index: 53;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    color: $priceColor;
+                    padding-top: 16px;    
+                    transition: background-color .4s;      
+                }
+                
+                svg {
+                    width: 320px;
+                    height: 480px;
+                    z-index: -50;                  
+                    fill: $backgroundCards;                               
+                }              
+            }
+
+
+            &.default {
+
+                .svg-wrapper {
+
+                    svg {
+                        fill: $defaultColor;  
+                    }
+                }
+
+                .circle{
+
+                    background-color: $defaultColor;
+                }
+                
+                &:hover {
+
+                    
+                    .svg-wrapper {
+
+                        svg {
+                            fill: $defaultHoverColor;  
+                        }
+                    }
+
+                    .circle{
+
+                        background-color: $defaultHoverColor;
+                    }
+                }
+
+
+                &.selected_hover {
+
+                    
+                    .svg-wrapper {
+
+                        svg {
+                            fill: $selectedHoverColor;  
+                        }
+                    }
+
+                    .circle{
+
+                        background-color: $selectedHoverColor;
+                    }
+ 
+                    .subheader {
+                        color:$selectedHoverColor;
+                    }
+
+                }
+            }
+
+            &.selected {
+
+                .svg-wrapper {
+
+                    svg {
+                        fill: $selectedColor;  
+                    }
+                }
+
+                .circle{
+
+                    background-color: $selectedColor;
+                }               
+               
+            }
+
+            &.disabled {
+
+                .svg-wrapper {
+
+                    svg {
+                        fill: $headerColor;  
+                    }
+                } 
+
+                .wrapper {                   
+
+                    .circle{
+
+                        background-color: $headerColor;
+                    }
+                  
+                }
+
+                .svg-disabled {
+                    opacity: .5;               
+                }
+                
+            }       
+        }
+       
+
+        .action {
+            position: absolute;                
+            bottom: -55px;
+            color: $textOverBackground;
+            width: 100%;  
+            font-size: 13px;         
+
+            p {
+                text-transform: none;
+                text-align: center;
+                
+                .buy {
+                    color: $colorLinks;
+                    border-bottom: 1px dashed  $colorLinks;
+                    cursor: pointer;
+                }
+                
+                .t{
+                    color: $colorLinks;
+                }
+
+                &.visible {
+                    display: block;
+                }
+
+                display: none;
+
+                &.disabled {
+                    color: $disabledTextColor;
+                }
+                  
+            }
+           
+        }          
+      
+    }
+    
+}
+
+
+.on_off{
+    position: fixed;
+    top: 50px;
+    left: 100px;
+    z-index: 150;
+}
+
+.change_text {
+    position: fixed;
+    top: 150px;
+    left: 100px;
+    z-index: 150;
+}
+
+@media screen and (max-width: 992px) {
+    .item {
+        margin: 0 auto 100px;
+
+        &:first-of-type {
+           
+        }
+    }
+
+ 
+    .main-row {
+        justify-content: space-between;
+    }
+}
